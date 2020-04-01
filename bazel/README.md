@@ -1,11 +1,15 @@
 # OR-Tools Bazel Build Instructions
 
-| OS     |                                    |
-|:-------|------------------------------------|
-| Ubuntu | [![Status][linux_svg]][linux_link] |
+| OS      |                                    |
+|:--------|------------------------------------|
+| Linux   | [![Status][linux_svg]][linux_link] |
+| MacOS   | [![Status][osx_svg]][osx_link]     |
+| Windows | [![Status][win_svg]][win_link]     |
 
-[linux_svg]: https://github.com/google/or-tools/workflows/Bazel/badge.svg
-[linux_link]: https://github.com/google/or-tools/actions?query=workflow%3A"Bazel"
+Dockers: [![Status][docker_svg]][docker_link]
+
+[docker_svg]: https://github.com/google/or-tools/workflows/Docker%20Bazel/badge.svg
+[docker_link]: https://github.com/google/or-tools/actions?query=workflow%3A"Docker+Bazel"
 
 ## Introduction
 <nav for="bazel"> |
