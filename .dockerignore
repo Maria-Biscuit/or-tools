@@ -15,14 +15,19 @@ ci/Makefile
 .clang-format
 
 binder
-tools
+tools/doc
+tools/docker
+tools/release
+tools/win
 
+#CMakeLists.txt
+#cmake
 cmake/cache
 cmake/docker
 cmake/Makefile
 
-makefiles
-Makefile
+#Makefile
+#makefiles
 Makefile.local
 
 #bazel
