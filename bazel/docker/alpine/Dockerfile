@@ -4,7 +4,8 @@ FROM alpine:edge AS env
 LABEL maintainer="mizux.dev@gmail.com"
 # Install system build dependencies
 ENV PATH=/usr/local/bin:$PATH
-RUN apk add --no-cache git build-base bazel
+RUN apk add --no-cache git build-base
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing bazel
 CMD [ "/bin/sh" ]
 
 FROM env AS devel
