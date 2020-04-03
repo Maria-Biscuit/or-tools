@@ -1,4 +1,5 @@
-PROJECT := ortools/cmake
+PROJECT := ortools
+BUILD_SYSTEM := cmake
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 SHA1 := $(shell git rev-parse --verify HEAD)
 
@@ -90,7 +91,7 @@ SUFFIXES =
 .SECONDARY:
 
 # Docker image name prefix.
-IMAGE := ${PROJECT}
+IMAGE := ${PROJECT}/${BUILD_SYSTEM}
 
 ifdef NOCACHE
 DOCKER_BUILD_CMD := docker build --no-cache
@@ -136,7 +137,7 @@ cache/%/docker_$1.tar: %_$1
 sh_targets_$1 = $(addprefix sh_, $(addsuffix _$1, $(DISTROS)))
 .PHONY: $$(sh_targets_$1)
 $$(sh_targets_$1): sh_%_$1: %_$1
-	${DOCKER_RUN_CMD} -it --name ${IMAGE}_$$*_$1 ${IMAGE}:$$*_$1 /bin/sh
+	${DOCKER_RUN_CMD} -it --name ${PROJECT}_${BUILD_SYSTEM}_$$*_$1 ${IMAGE}:$$*_$1 /bin/sh
 
 #$$(info Create targets: $(addprefix clean_, $(addsuffix _$1, $(DISTROS))).)
 clean_targets_$1 = $(addprefix clean_, $(addsuffix _$1, $(DISTROS)))
@@ -244,13 +245,13 @@ python_targets_$1 = $(addprefix sh_, $(addsuffix _python_$1, $(DISTROS)))
 .PHONY: $$(cpp_targets_$1) $$(dotnet_targets_$1) $$(java_targets_$1) $$(python_targets_$1)
 
 $$(cpp_targets): sh_%_cpp_$1: %_cpp_$1
-	${DOCKER_RUN_CMD} -it --name ${IMAGE}_$$*_cpp_$1 ${IMAGE}:$$*_cpp_$1 /bin/sh
+	${DOCKER_RUN_CMD} -it --name ${PROJECT}_${BUILD_SYSTEM}_$$*_cpp_$1 ${IMAGE}:$$*_cpp_$1 /bin/sh
 $$(dotnet_targets): sh_%_dotnet_$1: %_dotnet_$1
-	${DOCKER_RUN_CMD} -it --name ${IMAGE}_$$*_dotnet_$1 ${IMAGE}:$$*_dotnet_$1 /bin/sh
+	${DOCKER_RUN_CMD} -it --name ${PROJECT}_${BUILD_SYSTEM}_$$*_dotnet_$1 ${IMAGE}:$$*_dotnet_$1 /bin/sh
 $$(java_targets): sh_%_java_$1: %_java_$1
-	${DOCKER_RUN_CMD} -it --name ${IMAGE}_$$*_java_$1 ${IMAGE}:$$*_java_$1 /bin/sh
+	${DOCKER_RUN_CMD} -it --name ${PROJECT}_${BUILD_SYSTEM}_$$*_java_$1 ${IMAGE}:$$*_java_$1 /bin/sh
 $$(python_targets): sh_%_python_$1: %_python_$1
-	${DOCKER_RUN_CMD} -it --name ${IMAGE}_$$*_python_$1 ${IMAGE}:$$*_python_$1 /bin/sh
+	${DOCKER_RUN_CMD} -it --name ${PROJECT}_${BUILD_SYSTEM}_$$*_python_$1 ${IMAGE}:$$*_python_$1 /bin/sh
 
 # Clean $1 docker images.
 #$$(info Create targets: clean_$1 $(addprefix clean_, $(addsuffix _$1, $(DISTROS))).)
