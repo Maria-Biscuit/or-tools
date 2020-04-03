@@ -1,4 +1,5 @@
-PROJECT := ortools/bazel
+PROJECT := ortools
+BUILD_SYSTEM := bazel
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 SHA1 := $(shell git rev-parse --verify HEAD)
 
@@ -62,7 +63,7 @@ SUFFIXES =
 .SECONDARY:
 
 # Docker image name prefix.
-IMAGE := ${PROJECT}
+IMAGE := ${PROJECT}/${BUILD_SYSTEM}
 
 ifdef NOCACHE
 DOCKER_BUILD_CMD := docker build --no-cache
@@ -105,7 +106,7 @@ cache/%/docker_$1.tar: %_$1
 sh_targets_$1 = $(addprefix sh_, $(addsuffix _$1, $(DISTROS)))
 .PHONY: $(sh_targets_$1)
 $$(sh_targets_$1): sh_%_$1: %_$1
-	${DOCKER_RUN_CMD} -it --name ortools_bazel_$$*_$1 ${IMAGE}:$$*_$1 /bin/sh
+	${DOCKER_RUN_CMD} -it --name ${PROJECT}_${BUILD_SYSTEM}_$$*_$1 ${IMAGE}:$$*_$1 /bin/sh
 
 #$$(info Create targets: $(addprefix clean_, $(addsuffix _$1, $(DISTROS))).)
 clean_targets_$1 = $(addprefix clean_, $(addsuffix _$1, $(DISTROS)))
