@@ -71,10 +71,6 @@ For example to test inside an `Ubuntu` container:
 make ubuntu_test
 ```
 
-```sh
-docker build -t bazel -f docker/ubuntu/Dockerfile ..
-```
-
 ### Docker Layers
 Dockerfile is splitted in several stages.
 
