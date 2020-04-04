@@ -15,7 +15,6 @@ ci/Makefile
 .clang-format
 
 binder
-tools/doc
 tools/docker
 tools/release
 tools/win
