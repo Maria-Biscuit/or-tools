@@ -1,4 +1,4 @@
-FROM ortools:ubuntu_swig AS env
+FROM ortools/cmake:ubuntu_swig AS env
 # see: https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-ubuntu-1910
 RUN apt-get update -qq \
 && apt-get install -yq wget apt-transport-https \

@@ -1,4 +1,4 @@
-FROM ortools:ubuntu_swig AS env
+FROM ortools/cmake:ubuntu_swig AS env
 RUN apt-get update -qq \
 && apt-get install -yq python3-dev python3-pip \
 && apt-get clean \

@@ -1,4 +1,4 @@
-FROM ortools:centos_swig AS env
+FROM ortools/cmake:centos_swig AS env
 # see https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-centos7
 RUN rpm -Uvh "https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm" \
 && yum -y update \

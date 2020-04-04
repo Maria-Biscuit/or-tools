@@ -1,4 +1,4 @@
-FROM ortools:debian_base AS env
+FROM ortools/cmake:debian_base AS env
 RUN cmake -version
 
 FROM env AS devel

@@ -1,4 +1,4 @@
-FROM ortools:opensuse_swig AS env
+FROM ortools/cmake:opensuse_swig AS env
 RUN zypper update -y \
 && zypper install -y python3 python3-pip python3-devel \
 && zypper clean -a

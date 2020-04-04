@@ -1,4 +1,4 @@
-FROM ortools:archlinux_base AS env
+FROM ortools/cmake:archlinux_base AS env
 RUN cmake -version
 
 FROM env AS devel

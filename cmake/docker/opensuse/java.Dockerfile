@@ -1,4 +1,4 @@
-FROM ortools:opensuse_swig AS env
+FROM ortools/cmake:opensuse_swig AS env
 RUN zypper update -y \
 && zypper install -y java-1_8_0-openjdk-devel maven \
 && zypper clean -a

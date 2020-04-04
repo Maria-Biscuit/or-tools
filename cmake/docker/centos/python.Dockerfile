@@ -1,4 +1,4 @@
-FROM ortools:centos_swig AS env
+FROM ortools/cmake:centos_swig AS env
 RUN yum -y update \
 && yum -y install python36-devel \
 && yum clean all \

@@ -1,4 +1,4 @@
-FROM ortools:alpine_base AS env
+FROM ortools/cmake:alpine_base AS env
 RUN cmake -version
 
 FROM env AS devel

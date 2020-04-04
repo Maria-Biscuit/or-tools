@@ -1,4 +1,4 @@
-FROM ortools:fedora_base AS env
+FROM ortools/cmake:fedora_base AS env
 RUN cmake -version
 
 FROM env AS devel

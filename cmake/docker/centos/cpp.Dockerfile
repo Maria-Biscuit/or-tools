@@ -1,4 +1,4 @@
-FROM ortools:centos_base AS env
+FROM ortools/cmake:centos_base AS env
 RUN cmake -version
 
 FROM env AS devel

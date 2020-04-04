@@ -1,4 +1,4 @@
-FROM ortools:archlinux_swig AS env
+FROM ortools/cmake:archlinux_swig AS env
 RUN pacman -Syu --noconfirm python python-pip
 
 FROM env AS devel

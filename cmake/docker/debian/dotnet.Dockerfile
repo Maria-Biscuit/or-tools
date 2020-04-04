@@ -1,4 +1,4 @@
-FROM ortools:debian_swig AS env
+FROM ortools/cmake:debian_swig AS env
 # see: https://docs.microsoft.com/en-us/dotnet/core/install/linux-package-manager-debian10
 RUN apt-get update -qq \
 && apt-get install -yq wget gpg apt-transport-https \

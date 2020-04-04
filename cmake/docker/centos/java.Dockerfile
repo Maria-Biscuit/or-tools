@@ -1,4 +1,4 @@
-FROM ortools:centos_swig AS env
+FROM ortools/cmake:centos_swig AS env
 RUN yum -y update \
 && yum -y install java-1.8.0-openjdk  java-1.8.0-openjdk-devel maven \
 && yum clean all \

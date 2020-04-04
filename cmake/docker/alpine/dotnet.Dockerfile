@@ -1,4 +1,4 @@
-FROM ortools:alpine_swig AS env
+FROM ortools/cmake:alpine_swig AS env
 RUN apk add --no-cache wget icu-libs	libintl
 # .NET install
 RUN dotnet_sdk_version=3.1.101 \

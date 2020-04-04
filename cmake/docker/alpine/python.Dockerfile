@@ -1,4 +1,4 @@
-FROM ortools:alpine_swig AS env
+FROM ortools/cmake:alpine_swig AS env
 RUN apk add --no-cache python3-dev py3-pip
 
 FROM env AS devel
