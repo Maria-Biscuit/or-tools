@@ -3,93 +3,21 @@ name: Docker Bazel
 on: [push, pull_request]
 
 jobs:
-  Alpine:
+  Distros:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: [alpine, archlinux, centos, debian, fedora, opensuse, ubuntu]
+        lang: [cpp, python, dotnet, java]
+    env:
+      DISTRO: ${{ matrix.distro }}
     steps:
     - uses: actions/checkout@v2
     - name: Build env image
-      run: make --directory=bazel alpine_env
+      run: make --directory=bazel ${DISTRO}_env
     - name: Build devel project
-      run: make --directory=bazel alpine_devel
+      run: make --directory=bazel ${DISTRO}_devel
     - name: Build project
-      run: make --directory=bazel alpine_build
+      run: make --directory=bazel ${DISTRO}_build
     - name: Test C++
-      run: make --directory=bazel alpine_test
-
-  Archlinux:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build env image
-      run: make --directory=bazel archlinux_env
-    - name: Build devel project
-      run: make --directory=bazel archlinux_devel
-    - name: Build project
-      run: make --directory=bazel archlinux_build
-    - name: Test C++
-      run: make --directory=bazel archlinux_test
-
-  Centos:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build env image
-      run: make --directory=bazel centos_env
-    - name: Build devel project
-      run: make --directory=bazel centos_devel
-    - name: Build project
-      run: make --directory=bazel centos_build
-    - name: Test C++
-      run: make --directory=bazel centos_test
-
-  Debian:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build env image
-      run: make --directory=bazel debian_env
-    - name: Build devel project
-      run: make --directory=bazel debian_devel
-    - name: Build project
-      run: make --directory=bazel debian_build
-    - name: Test C++
-      run: make --directory=bazel debian_test
-
-  Fedora:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build env image
-      run: make --directory=bazel fedora_env
-    - name: Build devel project
-      run: make --directory=bazel fedora_devel
-    - name: Build project
-      run: make --directory=bazel fedora_build
-    - name: Test C++
-      run: make --directory=bazel fedora_test
-
-  OpenSuse:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build env image
-      run: make --directory=bazel opensuse_env
-    - name: Build devel project
-      run: make --directory=bazel opensuse_devel
-    - name: Build project
-      run: make --directory=bazel opensuse_build
-    - name: Test C++
-      run: make --directory=bazel opensuse_test
-
-  Ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build env image
-      run: make --directory=bazel ubuntu_env
-    - name: Build devel project
-      run: make --directory=bazel ubuntu_devel
-    - name: Build project
-      run: make --directory=bazel ubuntu_build
-    - name: Test C++
-      run: make --directory=bazel ubuntu_test
+      run: make --directory=bazel ${DISTRO}_test
