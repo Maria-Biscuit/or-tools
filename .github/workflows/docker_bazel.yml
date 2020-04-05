@@ -8,7 +8,6 @@ jobs:
     strategy:
       matrix:
         distro: [alpine, archlinux, centos, debian, fedora, opensuse, ubuntu]
-        lang: [cpp, python, dotnet, java]
       fail-fast: false
     env:
       DISTRO: ${{ matrix.distro }}
@@ -16,9 +15,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build env image
       run: make --directory=bazel ${DISTRO}_env
-    - name: Build devel project
+    - name: Build devel image
       run: make --directory=bazel ${DISTRO}_devel
     - name: Build project
       run: make --directory=bazel ${DISTRO}_build
-    - name: Test C++
+    - name: Test project
       run: make --directory=bazel ${DISTRO}_test

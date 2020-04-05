@@ -17,9 +17,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build base image
       run: make --directory=makefiles ${DISTRO}_base
-    - name: Build env images
+    - name: Build env image
       run: make --directory=makefiles ${DISTRO}_${LANG}_env
-    - name: Build devel images
+    - name: Build devel image
       run: make --directory=makefiles ${DISTRO}_${LANG}_devel
     - name: Build project
       run: make --directory=makefiles ${DISTRO}_${LANG}_build
