@@ -15,14 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build base image
-      run: make --directory=ci ${DISTRO}_base
+      run: make --directory=makefiles ${DISTRO}_base
     - name: Build env images
-      run: make --directory=ci ${DISTRO}_${LANG}_env
+      run: make --directory=makefiles ${DISTRO}_${LANG}_env
     - name: Build devel images
-      run: make --directory=ci ${DISTRO}_${LANG}_devel
+      run: make --directory=makefiles ${DISTRO}_${LANG}_devel
     - name: Build project
-      run: make --directory=ci ${DISTRO}_${LANG}_build
+      run: make --directory=makefiles ${DISTRO}_${LANG}_build
     - name: Test project
-      run: make --directory=ci ${DISTRO}_${LANG}_test
+      run: make --directory=makefiles ${DISTRO}_${LANG}_test
     - name: Package project
-      run: make --directory=ci ${DISTRO}_${LANG}_package
+      run: make --directory=makefiles ${DISTRO}_${LANG}_package
