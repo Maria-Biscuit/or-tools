@@ -6,6 +6,8 @@ LABEL maintainer="corentinl@google.com"
 ENV PATH=/usr/local/bin:$PATH
 RUN apt-get update -qq \
 && apt-get install -yq git wget curl libssl-dev build-essential \
+&& apt-get install -yq python3-dev python3-pip \
+&& apt-get install -yq default-jdk \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Install Bazel

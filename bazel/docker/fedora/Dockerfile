@@ -7,7 +7,7 @@ ENV PATH=/usr/local/bin:$PATH
 RUN dnf -y update \
 && dnf -y install git \
 && dnf -y groupinstall "Development Tools" \
-&& dnf -y install gcc-c++ \
+&& dnf -y install gcc-c++ zlib-devel \
 && dnf -y install dnf-plugins-core \
 && dnf -y copr enable vbatts/bazel \
 && dnf -y install bazel \
